@@ -4,8 +4,8 @@ import { useEffect} from 'react';
 import { useDispatch  , useSelector  } from "react-redux";
 import { fetchProducts } from "../store/actions";
 import Filter from "./Filter";
+import useProductFilter from "./useProductFilter";
 const Products = () => {
-
     const  { isLoading , errorMessage } = useSelector(
         (state) => state.errors 
     );
@@ -15,12 +15,11 @@ const Products = () => {
         (state) => state.products
     )
     const dispatch = useDispatch();  
+    useProductFilter(); 
 
     useEffect(() => {
         dispatch(fetchProducts()); 
     } , [dispatch]) ; 
-
-    
 //   const products = [
 //     {
 //           productId: 652,
@@ -60,7 +59,7 @@ const Products = () => {
                     <div className="min-h-[700px]">
                         <div className="pb-6 pt-14 grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
                                  {products && 
-                                 products.map((item , i ) => <ProductCart key={i} {...item} /> 
+                                 products.map((item , i) => <ProductCart key={i} {...item} /> 
                                  )}
                         </div>
                     </div>  
