@@ -22,7 +22,7 @@ const colors = ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-yellow-500"];
 
 
 
-console.log("Swiper is rendering");
+// console.log("Swiper is rendering");
 const HeroBanner =() => {
     return (
         
