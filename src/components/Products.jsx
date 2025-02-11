@@ -1,4 +1,4 @@
-import ProductCart from "./ProductCart";
+import ProductCart from "./shared/ProductCart";
 import {FaExclamationTriangle} from "react-icons/fa" ; 
 import { useEffect} from 'react';
 import { useDispatch  , useSelector  } from "react-redux";
@@ -45,9 +45,9 @@ const Products = () => {
     return (
 
         <div className="lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">
-          <Filter/>
-            { isLoading ? (
-                <p> It is loading... </p>
+          <Filter categories ={categories ? categories : [] }/>
+             { true ? (
+              <Loader/>
             ) :  errorMessage ? (
                     <div className="flex justify-center items-center h-[200px]">
                         <FaExclamationTriangle  className="text-slate-800 text-3xl mr-2"/>
