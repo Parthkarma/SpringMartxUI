@@ -8,8 +8,9 @@ import Home from './components/home/Home';
 import Contact from './components/Contact';
 import React from 'react';
 import { Toaster, toast } from 'react-hot-toast';
+import Cart from './components/cart/Cart';
 function App() {
-  const [count , setCount ] = useState(0)
+  
   return (
    <React.Fragment>
     <Router>
@@ -19,6 +20,7 @@ function App() {
          <Route path = '/products' element = { <Products/>} />
          <Route path = '/about' element = { <About/>} />
          <Route path = '/contact' element = { <Contact/>} />
+         <Route path = '/cart' element = { <Cart/>} />
        </Routes>
     </Router>
     <Toaster position = 'bottom-center' />
