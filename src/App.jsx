@@ -6,11 +6,12 @@ import { useState } from "react";
 import About from './components/About';
 import Home from './components/home/Home';
 import Contact from './components/Contact';
-
+import React from 'react';
+import { Toaster, toast } from 'react-hot-toast';
 function App() {
   const [count , setCount ] = useState(0)
   return (
-   
+   <React.Fragment>
     <Router>
       <Navbar/>
        <Routes>
@@ -20,7 +21,8 @@ function App() {
          <Route path = '/contact' element = { <Contact/>} />
        </Routes>
     </Router>
-    
+    <Toaster position = 'bottom-center' />
+    </React.Fragment>
   )
 }
 
