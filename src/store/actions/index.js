@@ -1,5 +1,8 @@
 import api from "../../api/api";
-import { toast } from "react-hot-toast"; // ✅ Correct import
+import { toast } from "react-hot-toast";
+export { formatPrice } from "../../utils/formatPrice"; 
+// ✅ Correct path
+
 
 export const fetchProducts = (queryString) => async (dispatch) => {
    try {
@@ -28,24 +31,26 @@ export const fetchProducts = (queryString) => async (dispatch) => {
 
 export const addToCart = (data, qty = 1) => (dispatch, getState) => {
    console.log(getState());
-   const { products } = getState().products;
+   const { products = [] } = getState().products || {}; // ✅ Null check
    const getProduct = products.find((item) => item.productId === data.productId);
 
    if (getProduct && getProduct.quantity >= qty) {
       dispatch({ type: "ADD_CART", payload: { ...data, quantity: qty } });
-      toast.success(`${data?.productName} added to the cart`); // ✅ Fixed toast usage
-      localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
+      toast.success(`${data?.productName} added to the cart`);
    } else {
-      toast.error("Out of stock"); // ✅ Changed from `toast.success`
+      toast.error("Out of stock");
    }
+
+   const updatedCart = getState().carts.cart;
+   localStorage.setItem("cartItems", JSON.stringify(updatedCart)); //  Safer update
 };
 
 export const increaseCartQuantity = (data, currentQuantity, setCurrentQuantity) => (dispatch, getState) => {
-   const { products } = getState().products;
+   const { products = [] } = getState().products || {}; //  Null check
    const getProduct = products.find((item) => item.productId === data.productId);
 
    if (!getProduct) {
-      toast.error("Product not found"); // ✅ Correct toast usage
+      toast.error("Product not found");
       return;
    }
 
@@ -58,8 +63,30 @@ export const increaseCartQuantity = (data, currentQuantity, setCurrentQuantity) 
          payload: { ...data, quantity: newQuantity },
       });
 
-      localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
+      toast.success("Quantity updated");
+
+      const updatedCart = getState().carts.cart;
+      localStorage.setItem("cartItems", JSON.stringify(updatedCart));
    } else {
-      toast.error("Quantity reached the limit"); // ✅ Corrected toast usage
+      toast.error("Quantity reached the limit");
    }
 };
+
+export const decreaseCartQuantity = 
+(data , newQuantity) =>( dispatch , getState ) =>{
+   dispatch({
+      type : "ADD_CART" , 
+      payload : {...data , quantity : newQuantity} , 
+   }) ;
+   localStorage.setItem("cartItems" , JSON.stringify(getState().carts.cart));
+
+}
+
+export const  removeFromCart = 
+( data , toast) => (dispatch , getState) =>{
+   dispatch({type:"REMOVE_CART" , payload : data});
+   toast.success(`${data.productName} remove from cart`);
+   localStorage.setItem("cartItems" , JSON.stringify(getState().carts.cart));
+
+}
+

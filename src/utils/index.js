@@ -1,4 +1,5 @@
 import { bannerImageOne, bannerImageThree, bannerImageTwo } from "./constant";
+export { default as formatPrice } from "./formatPrice"; // ✅ Correct re-export
 
 export const bannerListts = [
 
