@@ -9,8 +9,8 @@ import Contact from './components/Contact';
 import React from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import Cart from './components/cart/Cart';
+import LogIn from './components/auth/login';
 function App() {
-  
   return (
    <React.Fragment>
     <Router>
@@ -20,12 +20,11 @@ function App() {
          <Route path = '/products' element = { <Products/>} />
          <Route path = '/about' element = { <About/>} />
          <Route path = '/contact' element = { <Contact/>} />
-         <Route path = '/cart' element = { <Cart/>} />
+         <Route path = '/login' element = { <LogIn/>} />
        </Routes>
     </Router>
     <Toaster position = 'bottom-center' />
     </React.Fragment>
   )
 }
-
 export default App;
