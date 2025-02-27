@@ -1,4 +1,4 @@
-# 🛒 SpringMartXUI – React E-Commerce Frontend  
+# 🛒 SpringMartxUI – React E-Commerce Frontend  
 
 SpringMartXUI is the **React-based frontend** for the **SpringMartX** e-commerce platform. It provides an interactive and user-friendly shopping experience, integrating seamlessly with the backend built using **Spring Boot**.  
 
