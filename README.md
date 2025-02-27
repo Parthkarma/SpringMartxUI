@@ -32,21 +32,26 @@ SpringMartXUI is the **React-based frontend** for the **SpringMartX** e-commerce
 
 ---
 
-## 📂 **Project Structure**  
-SpringMartxUI/ │── public/ # Static assets
-│── src/ # Main frontend code
-│ ├── api/ # API service files
-│ ├── assets/ # Images & other assets
-│ ├── components/ # UI components
-│ │ ├── auth/ # Authentication (Login, Signup)
-│ │ ├── cart/ # Cart components (Cart, ItemContent, etc.)
-│ │ ├── home/ # Home components (HeroBanner, Home)
-│ │ ├── shared/ # Reusable components (Navbar, Loader, etc.)
-│ ├── store/ # Redux store, actions, reducers
-│ ├── utils/ # Utility functions
-│── .env # Environment variables
-│── package.json # Dependencies & scripts
-│── README.md # Documentation
+## 📂 Project Structure  
+
+```
+SpringMartxUI/  
+│── public/                     # Static assets  
+│── src/                        # Main frontend code  
+│   ├── api/                    # API service files  
+│   ├── assets/                 # Images & other assets  
+│   ├── components/             # UI components  
+│   │   ├── auth/               # Authentication (Login, Signup)  
+│   │   ├── cart/               # Cart components (Cart, ItemContent, etc.)  
+│   │   ├── home/               # Home components (HeroBanner, Home)  
+│   │   ├── shared/             # Reusable components (Navbar, Loader, etc.)  
+│   ├── store/                  # Redux store, actions, reducers  
+│   ├── utils/                  # Utility functions  
+│── .env                        # Environment variables  
+│── package.json                # Dependencies & scripts  
+│── README.md                   # Documentation  
+```
+
 
 ---
 
