@@ -1,8 +1,31 @@
-# React + Vite
+# 🛒 SpringMartXUI – E-Commerce Frontend (React)  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SpringMartXUI is the **React-based frontend** for the SpringMartX e-commerce platform, offering a clean and user-friendly shopping experience. It integrates with the Spring Boot backend to provide a seamless product browsing and cart management system.  
 
-Currently, two official plugins are available:
+## 🎥 Live Demo  
+[![Watch the video](https://img.youtube.com/vi/hZ4hr1VJABQ/0.jpg)](https://youtu.be/hZ4hr1VJABQ)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👆 **Click on the image to watch the project demo on YouTube!**  
+
+---
+
+## 🚀 **Features**  
+
+✅ **User Authentication & Authorization** – Login, Signup, JWT-based authentication  
+✅ **Product Management** – Browse, search, and filter products  
+✅ **Shopping Cart** – Add/remove products, update quantity  
+✅ **Mobile Responsive Design** – Works across different screen sizes  
+
+---
+
+## 🛠 **Tech Stack**  
+
+🔹 **Frontend:** React.js, Tailwind CSS  
+🔹 **State Management:** Redux Toolkit  
+🔹 **Routing:** React Router  
+🔹 **API Communication:** Axios  
+🔹 **Backend Integration:** Connects to [SpringMartX Backend](https://github.com/Parthkarma/SpringMartX)  
+
+---
+
+## 📂 **Project Structure**  
