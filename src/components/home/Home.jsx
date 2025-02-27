@@ -24,9 +24,9 @@ useEffect(() =>{
                 <div className="flex flex-col justify-center items-center space-y-2">
                     <h1 className="text-slate-800 text-4xl font-bold"> Products </h1>
                         
-                        <span className="text-slate-700">
-                            discover our handpicked selectoin of top-rated items just for you!
-                        </span>
+                    <p className="text-lg text-gray-700 max-w-2xl mx-auto mt-3 leading-relaxed">
+    Handpicked selection of top-rated items to elevate your lifestyle. Shop now and discover the best deals curated just for you!
+  </p>
                 </div>
                </div>
 

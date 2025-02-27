@@ -1,6 +1,8 @@
 import api from "../../api/api";
 import { toast } from "react-hot-toast";
+
 export { formatPrice } from "../../utils/formatPrice"; 
+
 export const fetchProducts = (queryString) => async (dispatch) => {
    try {
       dispatch({ type: "IS_FETCHING" });
@@ -25,6 +27,7 @@ export const fetchProducts = (queryString) => async (dispatch) => {
       });
    }
 };
+
 export const addToCart = (data, qty = 1) => (dispatch, getState) => {
    console.log(getState());
    const { products = [] } = getState().products || {}; 
@@ -38,10 +41,11 @@ export const addToCart = (data, qty = 1) => (dispatch, getState) => {
    }
 
    const updatedCart = getState().carts.cart;
-   localStorage.setItem("cartItems", JSON.stringify(updatedCart)); //  Safer update
+   localStorage.setItem("cartItems", JSON.stringify(updatedCart));
 };
+
 export const increaseCartQuantity = (data, currentQuantity, setCurrentQuantity) => (dispatch, getState) => {
-   const { products = [] } = getState().products || {}; //  Null check
+   const { products = [] } = getState().products || {};
    const getProduct = products.find((item) => item.productId === data.productId);
 
    if (!getProduct) {
@@ -66,41 +70,38 @@ export const increaseCartQuantity = (data, currentQuantity, setCurrentQuantity) 
       toast.error("Quantity reached the limit");
    }
 };
-export const decreaseCartQuantity = 
-(data , newQuantity) =>( dispatch , getState ) =>{
+
+export const decreaseCartQuantity = (data, newQuantity) => (dispatch, getState) => {
    dispatch({
-      type : "ADD_CART" , 
-      payload : {...data , quantity : newQuantity} , 
-   }) ;
-   localStorage.setItem("cartItems" , JSON.stringify(getState().carts.cart));
-}
-export const  removeFromCart = 
-( data , toast) => (dispatch , getState) =>{
-   dispatch({type:"REMOVE_CART" , payload : data});
-   toast.success(`${data.productName} remove from cart`);
-   localStorage.setItem("cartItems" , JSON.stringify(getState().carts.cart));
-}
+      type: "ADD_CART",
+      payload: { ...data, quantity: newQuantity },
+   });
+   localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
+};
 
-export const authenticateSignInUser = 
-(sendData , toast , reset , navigate , setLoader ) => async( dispatch) =>{
+export const removeFromCart = (data, toast) => (dispatch, getState) => {
+   dispatch({ type: "REMOVE_CART", payload: data });
+   toast.success(`${data.productName} removed from cart`);
+   localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
+};
 
-    try {
-      setLoader(true) ; 
-      const {data} = await api.post("/auth/signin" , sendData) ; 
-      dispatch({ type : "LOGIN_USER" , payload :data }); 
-      localStorage.setItem("auth" , JSON.stringify(data)); 
-      reset()
+
+export const authenticateSignInUser = (sendData, toast, reset, navigate, setLoader) => async (dispatch) => {
+   try {
+      setLoader(true); 
+      const { data } = await api.post("/auth/signin", sendData); 
+      
+      dispatch({ type: "LOGIN_USER", payload: data }); 
+      localStorage.setItem("auth", JSON.stringify(data)); 
+
+      reset();  
       toast.success("Login Success");
       navigate("/");
-    } catch (error) {
-           console.log(error);
-           toast.error(error.response.data.message || "Internal Server  Error" );
-    }
-    finally {
+
+   } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message || "Internal Server Error");
+   } finally {
       setLoader(false); 
-    }
-
-
-
-}
-
+   }
+};

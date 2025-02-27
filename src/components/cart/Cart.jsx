@@ -77,19 +77,9 @@ const Cart = () => {
 
                 <div className="flex flex-col items-end text-sm gap-1">
                     <div className="flex justify-between w-full md:text-lg text-sm font-semibold">
-                        <span>Subtotal</span>
-                        <span>{formatPrice(totalPrice)}</span>
+                        <span>Subtotal : </span>
+                        <span> {formatPrice( totalPrice)}</span>
                     </div>
-                    <p className="text-gray-500">Taxes and shipping calculated at checkout</p>
-
-                    <Link className="w-full flex justify-end" to="/checkout">
-                        <button
-                            className="mt-2 font-semibold w-[250px] py-2 px-4 rounded-lg bg-green-600 text-white flex items-center justify-center gap-2 hover:bg-green-700 transition duration-500"
-                        >
-                            <MdShoppingCart size={20} />
-                            Proceed to Checkout
-                        </button>
-                    </Link>
                 </div>
             </div>
         </div>

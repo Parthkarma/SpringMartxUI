@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AiOutlineLogin } from "react-icons/ai";
 import InputField from "../shared/InputField";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { authenticateSignInUser } from "../../store/actions";
-import {toast} from "react-toastify"; 
+import { toast } from "react-toastify"; 
+
 const LogIn = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch(); 
@@ -25,7 +26,8 @@ const LogIn = () => {
 
         setLoader(true);
         console.log("Login Clicked", data);
-        dispatch(authenticateSignInUser(data, toast, navigate, setLoader));  
+
+        dispatch(authenticateSignInUser(data, toast, reset, navigate, setLoader));
 
         setTimeout(() => {
             setLoader(false);
@@ -34,10 +36,13 @@ const LogIn = () => {
     }, [loader, navigate]);
 
     return (
-        <div className="min-h-[calc(100vh-64px)] flex justify-center items-center bg-gray-100">
+        <div 
+            className="min-h-screen flex justify-center items-center bg-cover bg-center"
+            style={{ backgroundImage: "url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2')" }}
+        >
             <form
                 onSubmit={handleSubmit(loginHandler)}
-                className="sm:w-[450px] w-[360px] bg-white shadow-lg border border-gray-300 py-8 sm:px-8 px-4 rounded-md"
+                className="relative z-10 sm:w-[450px] w-[360px] bg-white bg-opacity-90 shadow-xl border border-gray-300 py-8 sm:px-8 px-4 rounded-lg backdrop-blur-md"
             >
                 <div className="flex flex-col items-center justify-center space-y-4">
                     <AiOutlineLogin className="text-slate-800 text-5xl" />
@@ -45,9 +50,9 @@ const LogIn = () => {
                         Login Here
                     </h1>
                 </div>
-                <hr className="mt-2 mb-5 text-black" />
+                <hr className="mt-2 mb-5 border-gray-400" />
 
-                {/* ✅ Changed Email to Username */}
+                {/* Username Field */}
                 <InputField
                     label="Username"
                     id="username"
@@ -59,7 +64,7 @@ const LogIn = () => {
                     message="Username is required"
                 />
 
-                {/* ✅ Password Field */}
+                {/* Password Field */}
                 <InputField
                     label="Password"
                     id="password"
@@ -74,7 +79,7 @@ const LogIn = () => {
                 <button
                     type="submit"
                     disabled={loader}
-                    className={`mt-4 w-full py-2 rounded-md font-semibold ${
+                    className={`mt-4 w-full py-2 rounded-md font-semibold transition-all duration-300 ${
                         loader ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700 text-white"
                     }`}
                 >
@@ -84,7 +89,7 @@ const LogIn = () => {
                 <p className="text-center text-sm text-slate-700 mt-6">
                     Don't have an account?  
                     <Link className="font-semibold underline hover:text-black" to="/register">
-                        <span> SignUp</span>
+                        <span> Sign Up</span>
                     </Link>
                 </p>
             </form>
